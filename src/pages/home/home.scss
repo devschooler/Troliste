@@ -1,0 +1,29 @@
+page-home {
+  .item-md ion-thumbnail{
+    min-width: 40px;
+    min-height:40px;
+    max-width: 40px;
+    max-height: 40px;
+  }
+  .post{
+    p{
+      font-size: 20px;
+      color: rgba(102, 102, 102, 0.54)
+    }
+  }
+  .item-md ion-thumbnail img{
+    max-width: 5rem;
+    max-height: 8rem;
+  }
+  .upText{
+    font-size: 14px;
+  }
+  ion-spinner{
+    width:100%;
+    margin: auto;
+  }
+
+   .sebm-google-map-container {
+    height: 200px;
+  }
+}

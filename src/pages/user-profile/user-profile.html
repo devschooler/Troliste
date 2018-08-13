@@ -1,0 +1,75 @@
+<!--
+  Generated template for the UserProfile page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="custom">
+    <ion-title *ngIf="selectedUserData">{{selectedUserData.firstName}} {{selectedUserData.lastName}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-list >
+    <div class="profile">
+     
+    </div>
+    <div class="profile-detail">
+      <!-- <div class="edit-button" (click)="editProfile()">
+        <button ion-button icon-right clear small color="custom" >
+          <ion-icon name="create" ></ion-icon>
+        </button>
+      </div> -->
+      <div class="profile-data" *ngIf="selectedUserData">
+        <h2>{{selectedUserData.firstName}} {{selectedUserData.lastName}}</h2>
+      
+        <p>{{selectedUserData.Pseudo}}</p>
+      </div>
+    </div>
+  </ion-list>
+
+  <ion-card *ngFor="let p of recentPost">
+
+    <ion-item >
+     
+      <h2><span style="font-weight: 500;" (click)="userProfile(p.userKey)">{{p.userData.firstName}} {{p.userData.lastName}}</span> <span *ngIf="p.isType==1" class="upText">update his profile picture</span> <span *ngIf="p.isType==2" class="upText"> <ion-icon name="navigate" color="danger"></ion-icon> check in at {{p.mapData.address}}</span></h2>
+      <p>{{p.postDateTime | amTimeAgo}}</p>
+    </ion-item>
+
+    <ion-card-content *ngIf="p.postText && p.isType != 2">
+      <p>{{p.postText}}</p>
+    </ion-card-content>
+    <img src="{{p.postImage}}" style="height:200px" *ngIf="p.postImage" >
+    <img *ngIf="p.isType==2" src="{{p.mapUrl}}" style="200px" (click)="openMap(p.mapData.lat,p.mapData.long)">
+    <ion-row>
+      <ion-col>
+        <button ion-button icon-left clear small color="dark" (click)="likePost(p)" *ngIf="!p.isLike">
+       <ion-icon ios="ios-people" md="md-people"></ion-icon>
+
+          <div>{{p.totalLikes}} Je veux jouer  </div>
+        </button>
+        <button ion-button icon-left clear small color="custom" (click)="deslikePost(p)" *ngIf="p.isLike">
+      <ion-icon ios="ios-people" md="md-people"></ion-icon>
+
+          <div>{{p.totalLikes}} Je participe ! </div>
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-left clear small color="dark" (click)="commentPost(p)" *ngIf="!p.isComment">
+          <ion-icon name="text"></ion-icon>
+          <div>{{p.totalComments}} Commentaires</div>
+        </button>
+        <button ion-button icon-left clear small color="custom" (click)="commentPost(p)" *ngIf="p.isComment" >
+          <ion-icon name="text"></ion-icon>
+          <div>{{p.totalComments}} Commentaires </div>
+        </button>
+      </ion-col>
+    
+    </ion-row>
+  </ion-card>
+
+</ion-content>

@@ -1,0 +1,60 @@
+<!--
+  Generated template for the Register page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="custom">
+    <ion-title> Modifier le profile </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-right clear small (click)="updateProfile()" ><!--[disabled]="!registerForm.valid"-->
+      Enregistrer 
+      </button>
+   </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form >
+    <ion-list *ngIf="userData">
+      <ion-row >
+     
+
+        <ion-col width-67 >
+            <ion-input type="text" value="" placeholder="First Name" name="firstName" [(ngModel)]="userData.firstName"></ion-input>
+            <!-- Error message --->
+            <!-- <div *ngIf="!registerForm.controls.firstName.valid && registerForm.controls.firstName.touched"
+            class="error-box">First Name is required</div> -->
+
+            <ion-input type="text" value="" placeholder="Last Name" [(ngModel)]="userData.lastName" name="lastName"></ion-input>
+            <!-- Error message --->
+            <!-- <div *ngIf="!registerForm.controls.lastName.valid && registerForm.controls.lastName.touched"
+            class="error-box">Last Name is required</div> -->
+        </ion-col>
+      </ion-row>
+      <ion-input type="text" placeholder="Email"  readonly [(ngModel)]="userData.email" name="email"></ion-input>
+        <!-- Error message --->
+        <!-- <div *ngIf="!registerForm.controls.email.valid && registerForm.controls.email.touched"
+        class="error-box">Email is required</div> -->
+      <ion-input type="text" placeholder="Pseudo" [(ngModel)]="userData.Pseudo" name="pseudo"></ion-input>
+        <!-- Error message --->
+        <!-- <div *ngIf="!registerForm.controls.Pseudo.valid && registerForm.controls.Pseudo.touched"
+        class="error-box">Occupation is required</div> -->
+   
+      <ion-input type="password" placeholder="Password"  [(ngModel)]="userData.password" name="password" readonly></ion-input>
+        <!-- Error message --->
+        <!-- <div *ngIf="!registerForm.controls.password.valid && registerForm.controls.password.touched"
+        class="error-box">Password is required</div> -->
+    </ion-list>
+
+<!--
+    <div class="sign-in-button">
+      <button ion-button full color="custom" (click)="register()" [disabled]="!registerForm.valid">Join Now</button>
+      <p style="text-align:center;color:#fff">You have already account ? <a (click)="login()"> Sign In</a></p>
+    </div> -->
+  </form>
+</ion-content>

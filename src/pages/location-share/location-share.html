@@ -1,0 +1,31 @@
+<!--
+  Generated template for the LocationShare page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="custom">
+    <ion-title>Location</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-right clear small (click)="shareLocation()" ><!--[disabled]="!registerForm.valid"-->
+        POST
+      </button>
+   </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content >
+  <ion-searchbar [(ngModel)]="autocomplete.query" [showCancelButton]="true" (ionInput)="updateSearch()" (ionCancel)="dismiss()" [debounce]="250"></ion-searchbar>
+  <ion-list *ngIf="!isMapDisplay">
+     <ion-item *ngFor="let item of autocompleteItems" tappable (click)="chooseItem(item)">
+      <img src="assets/map.png"> {{ item.description }}
+     </ion-item>
+   </ion-list>
+  <!-- <div id="map" data-tap-disabled="true"></div> -->
+  <div #map id="map" *ngIf="isMapDisplay"></div>
+
+</ion-content>

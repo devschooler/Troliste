@@ -1,0 +1,94 @@
+<!--
+  Generated template for the Chatting page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="custom">
+    <ion-title>{{toUserData.firstName}} {{toUserData.lastName}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content #content>
+  <div class="message-wrapper" *ngFor="let p of messages">
+     <div *ngIf="userData.userKey !== p.loginUserKey && p.isType==0">
+         <div class="chat-bubble left">
+             <div class="message">
+                {{p.message}}
+             </div>
+
+             <div class="message-detail">
+                 <span class="bold">{{toUserData.firstName}}</span>,
+                 <span>{{p.dateTime | amTimeAgo}}</span>
+             </div>
+
+         </div>
+     </div>
+     <div *ngIf="userData.userKey === p.loginUserKey  && p.isType==0">
+          <div class="chat-bubble right">
+               <div class="message">
+                  {{p.message}}
+               </div>
+               <div class="message-detail">
+                   <span class="bold">{{userData.firstName}}</span>,
+                   <span>{{p.dateTime | amTimeAgo}} </span>
+                  <span class="unreadArrow" [ngClass]="{'readArrow': p.isRead==1 }"><ion-icon name="done-all"></ion-icon> </span>
+               </div>
+           </div>
+       </div>
+       <div *ngIf="userData.userKey !== p.loginUserKey && p.isType==1">
+      
+           <div class="image-bubble chat-bubble left">
+               <div class="message">
+                  <img src="{{p.message}}" height="200" width="200">
+               </div>
+
+               <div class="message-detail">
+                   <span class="bold">{{toUserData.firstName}}</span>,
+                   <span>{{p.dateTime | amTimeAgo}}</span>
+               </div>
+
+           </div>
+       </div>
+       <div *ngIf="userData.userKey === p.loginUserKey  && p.isType==1">
+            <div class="image-bubble chat-bubble right ">
+                 <div class="message">
+                    <img src="{{p.message}}" height="200" width="200">
+                 </div>
+                 <div class="message-detail">
+                     <span class="bold">{{userData.firstName}}</span>,
+                     <span>{{p.dateTime | amTimeAgo}} </span>
+                    <span class="unreadArrow" [ngClass]="{'readArrow': p.isRead==1 }"><ion-icon name="done-all"></ion-icon> </span>
+                 </div>
+             </div>
+         </div>
+       <div class="cf"></div>
+
+   </div>
+</ion-content>
+
+<ion-footer>
+  <ion-grid>
+    <ion-row>
+      <ion-col width-10>
+        <button ion-button icon-only color="custom" (click)="imageShare()">
+          <ion-icon name='camera'></ion-icon>
+        </button>
+      </ion-col>
+      <ion-col width-75 class="text-area">
+        <ion-textarea #textarea placeholder=" Entrez votre message " [(ngModel)]="messageText" (focus)="onBlur($event)"></ion-textarea>
+
+      </ion-col>
+      <ion-col width-10>
+        <button ion-button icon-only   style="margin-right:10px" color="custom" (click)="sendMessage(messageText,0,textarea)" [disabled]="!messageText">
+          <ion-icon name='send'></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-footer>

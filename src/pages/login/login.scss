@@ -1,0 +1,40 @@
+page-login {
+  .scroll-content{
+    background-image: url('../assets/background1.jpg') !important;
+    overflow:hidden;
+  }
+  .item-md{
+    background-color: transparent;
+    color: #fff;
+  }
+  .logo{
+    // height: 200px;
+    width: 100%;
+    text-align: center;
+    margin: 50px 0px;
+    img{
+      height: 150px;
+    }
+  }
+  ion-list{
+    padding: 15px !important
+  }
+  .text-input-md{
+    color: #fff;
+  }
+  .content-ios{
+    color: #fff;
+  }
+  .sign-in-button{
+    padding: 10px;
+  }
+  .item-md{
+        padding-right: 16px;
+
+  }
+  ion-navbar-section {
+  display: none;
+  }
+
+
+}

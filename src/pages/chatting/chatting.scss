@@ -1,0 +1,141 @@
+page-chatting {
+
+  .scroll-content{
+    background-color:#ffffff !important;
+  }
+  ion-footer{
+    border-top: 1px solid #ddd;
+  }
+  img.profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 10px;
+  }
+
+  img.profile-pic.left {
+    left: 10px;
+  }
+
+  img.profile-pic.right {
+    right: 10px;
+  }
+
+  .ion-email {
+    float: right;
+    font-size: 32px;
+    vertical-align: middle;
+  }
+
+  .message {
+    font-size: 14px;
+  }
+
+  .message-detail {
+    white-space: nowrap;
+    font-size: 14px;
+  }
+
+  .message-wrapper {
+    position: relative;
+  }
+
+  .message-wrapper:last-child {
+    margin-bottom: 10px;
+  }
+
+  .chat-bubble {
+    border-radius: 5px;
+    display: inline-block;
+    padding: 7px 15px;
+    position: relative;
+    margin: 10px;
+    max-width: 80%;
+  }
+
+  .chat-bubble:before {
+    content: "\00a0";
+    display: block;
+    height: 16px;
+    width: 9px;
+    position: absolute;
+    bottom: -7.5px;
+  }
+
+  .chat-bubble.left {
+    background-color: #e6e5eb;
+    color: rgba(0, 0, 0, 0.79);
+
+    float: left;
+  }
+
+  .chat-bubble.left:before {
+    background-color: #e6e5eb;
+    left: 10px;
+    -webkit-transform: rotate(70deg) skew(5deg);
+  }
+
+  .chat-bubble.right {
+    background-color: rgba(191, 223, 251, 0.56);
+    color: rgba(0, 0, 0, 0.79);
+    float: right;
+  }
+
+  .chat-bubble.right:before {
+    background-color:rgba(191, 223, 251, 0.56);
+    right: 10px;
+    -webkit-transform: rotate(118deg) skew(-5deg);
+  }
+
+  .chat-bubble.right a.autolinker {
+    color: #000;
+    font-weight: bold;
+  }
+
+  .user-messages-top-icon {
+    font-size: 28px;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    top: -3px;
+    right: 5px;
+  }
+
+  .msg-header-username {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    top: -3px;
+  }
+
+
+  .bold {
+    font-weight: bold;
+  }
+
+  .cf {
+    clear: both !important;
+  }
+
+  a.autolinker {
+    color: #3b88c3;
+    text-decoration: none;
+  }
+  .message-detail ion{
+    color:#797575 !important;
+  }
+  .readArrow ion{
+    color:rgb(54, 234, 179) !important;
+  }
+  ion-input, ion-textarea{
+    margin-top: -7px;
+  }
+  .text-area{
+    padding-left: 15px !important;
+    margin-left: 5px ; 
+  }
+  .image-bubble{
+    padding: 5px !important;
+  }
+}

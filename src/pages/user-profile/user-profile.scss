@@ -1,0 +1,57 @@
+  page-user-profile {
+  .profile{
+    height: 150px;
+    width: 150px;
+    margin: 50px auto 0px;
+    z-index: 99;
+    img{
+        border-radius: 75px;
+        border-style: double;
+        border-width: 6px;
+        border-color: #aaa;
+        width: 150px;
+        height: 150px;
+    }
+  }
+  .upText{
+    font-size: 14px;
+  }
+   .sebm-google-map-container {
+    height: 200px;
+  }
+  .list-ios{
+    margin:0px 0 125px 0px;
+  }
+  .list-md{
+    height: 270px;
+  }
+  .profile-detail{
+    height: 200px;
+    background-color: #fff;
+    position: absolute;
+    top: 115px;
+    margin: 0 2%;
+    width: 96%;
+    z-index:-99;
+    border-radius: 5px;
+    .edit-button{
+      width: 100%;
+      text-align: right;
+      .button-clear-md-custom{
+        font-size: 20px;
+      }
+    }
+    .profile-data{
+      margin-top: 90px;
+      h2{
+        font-family: sans-serif;
+        text-align: center;
+        color: rgba(0, 0, 0, 0.66);
+      }
+      p{
+        text-align: center;
+        color: rgba(0, 0, 0, 0.76);
+      }
+    }
+  }
+}

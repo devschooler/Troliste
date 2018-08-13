@@ -1,0 +1,26 @@
+page-comment {
+  // ion-col[width-75]{
+  //     padding-left: 15px;
+  // }
+  .scroll-content{
+    top:inherit;
+  }
+  .list-md{
+    margin: 0px;
+  }
+  .list-ios{
+    margin: 0px;
+  }
+  .nocomment{
+    height: 500px;
+    width: 100%;
+    z-index: 99;
+    background-color: #fff;
+    margin: auto;
+    text-align: Center;
+    padding-top: 40px;
+  }
+  ion-label{
+    white-space:inherit;
+  }
+}

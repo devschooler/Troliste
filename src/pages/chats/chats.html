@@ -1,0 +1,67 @@
+<!--
+  Generated template for the Chats page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="custom">
+    <!-- <ion-title>chats</ion-title> -->
+    <ion-segment [(ngModel)]="segmentSelected" (ionChange)="updateSchedule()" color="white">
+ 
+
+           <ion-segment-button value="all" >
+Utilisateurs
+      </ion-segment-button>
+      <ion-segment-button value="recent" >
+      Discussions
+      </ion-segment-button>
+   
+    </ion-segment>
+
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content >
+
+  <ion-spinner name="ios" *ngIf="!allUserAray.length"></ion-spinner>
+  <div *ngIf="segmentSelected == 'all'">
+    <ion-item  *ngFor="let p of allUserAray"  (click)="goToChatting(p) " >
+     
+      <h2>{{p.firstName}} {{p.lastName}}</h2>
+         <button ion-button clear item-right><ion-icon ios="ios-more" md="md-more"></ion-icon> </button>
+    </ion-item>
+  </div>
+  <div *ngIf="segmentSelected == 'favorites'">
+    <ion-item  *ngFor="let p of onlineUser" (click)="goToChatting(p)">
+
+      <h2>{{p.firstName}} {{p.lastName}}</h2>
+      <button ion-button clear item-right><img src="assets/greendot.jpg" height="13px"></button>
+    </ion-item>
+  </div>
+  <div *ngIf="segmentSelected == 'recent'">
+    <ion-item  *ngFor="let p of recentChats" (click)="goToChatting(p)">
+  
+      <h2>{{p.firstName}} {{p.lastName}}</h2>
+      <p *ngIf="p.isRead==0 && p.isType==0"><strong>{{p.message}}</strong></p>
+      <p *ngIf="p.isRead==1 && p.isType==0" >{{p.message}}</p>
+
+      <p *ngIf="p.isRead==0 && p.isType==1"><strong>  <ion-icon name="camera"></ion-icon> Image</strong></p>
+      <p *ngIf="p.isRead==1 && p.isType==1"><ion-icon name="camera"></ion-icon> Image</p>
+    </ion-item>
+  </div>
+</ion-content>
+<!-- <ion-content *ngIf="segmentSelected == 'favorites'">
+
+  <ion-spinner name="ios" *ngIf="!onlineUser.length"></ion-spinner>
+
+  <ion-item *ngFor="let p of onlineUser">
+    <ion-avatar item-left>
+      <img src="{{p.profilePic}}" style="height:150px" >
+    </ion-avatar>
+    <h2>{{p.firstName}} {{p.lastName}}</h2>
+  </ion-item>
+
+</ion-content> -->

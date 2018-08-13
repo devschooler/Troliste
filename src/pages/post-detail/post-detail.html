@@ -1,0 +1,90 @@
+<!--
+  Generated template for the PostDetail page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="custom">
+    <ion-title *ngIf="postDetail">{{postDetail.userData.firstName}} {{postDetail.userData.lastName}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content >
+  <ion-card *ngIf="postDetail">
+    <ion-item >
+      <ion-avatar item-left>
+        <img src="{{postDetail.userData.profilePic}}" style="height:150px">
+      </ion-avatar>
+      <h2>{{postDetail.userData.firstName}} {{postDetail.userData.lastName}}</h2>
+      <p>{{postDetail.postDateTime | amTimeAgo}}</p>
+    </ion-item>
+
+    <ion-card-content *ngIf="postDetail.postText && postDetail.isType != 2">
+      <p>{{postDetail.postText}}</p>
+    </ion-card-content>
+    <img src="{{postDetail.postImage}}" style="height:200px" *ngIf="postDetail.postImage">
+    <img *ngIf="postDetail.isType==2" src="{{postDetail.mapUrl}}" style="200px" (click)="openMap(p.mapData.lat,p.mapData.long)">
+
+    <ion-row>
+      <ion-col>
+        <button ion-button icon-left clear small color="dark" (click)="likePost(postDetail)"  *ngIf="!postDetail.isLike">
+          <ion-icon name="thumbs-up" ></ion-icon>
+          <div>{{postDetail.totalLikes}} Likes </div>
+        </button>
+        <button ion-button icon-left clear small color="custom" (click)="deslikePost(postDetail)" *ngIf="postDetail.isLike">
+          <ion-icon name="thumbs-up" ></ion-icon>
+          <div>{{postDetail.totalLikes}} Likes</div>
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-left clear small color="dark" (click)="commentPost(postDetail)" *ngIf="!postDetail.isComment">
+          <ion-icon name="text"></ion-icon>
+          <div>{{postDetail.totalComments}} Comments</div>
+        </button>
+        <button ion-button icon-left clear small color="custom" *ngIf="postDetail.isComment" (click)="commentPost(postDetail)">
+          <ion-icon name="text"></ion-icon>
+          <div>{{postDetail.totalComments}} Comments</div>
+        </button>
+      </ion-col>
+      <ion-col center text-center>
+        <button ion-button icon-left clear small color="dark">
+          <ion-icon name="share-alt"></ion-icon>
+          <div>share</div>
+        </button>
+      </ion-col>
+    </ion-row>
+    <ion-item *ngFor="let p of postDetail.comment" >
+      <ion-avatar item-left>
+        <img src="{{p.userData.profilePic}}" style="height:150px" >
+      </ion-avatar>
+      <h2>{{p.userData.firstName}} {{p.userData.lastName}}</h2>
+      <p>{{p.commentText}} </p>
+      <ion-note item-right>{{p.commentDateTime | amTimeAgo}}</ion-note>
+    </ion-item>
+  </ion-card>
+</ion-content>
+
+
+<!-- <ion-footer>
+  <ion-grid>
+    <ion-row>
+      <ion-col width-10>
+
+      </ion-col>
+      <ion-col width-75>
+        <ion-textarea  placeholder="Enter your comment" [(ngModel)]="commentText" cols="2"></ion-textarea>
+
+      </ion-col>
+      <ion-col width-10>
+        <button ion-button icon-only  color="custom" (click)="postComment()" [disabled]="!commentText">
+          <ion-icon name='send'></ion-icon>
+
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer> -->

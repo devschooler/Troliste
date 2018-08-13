@@ -1,0 +1,87 @@
+<ion-header>
+  <ion-navbar color="custom">
+    <ion-title>Toutes les parties</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content >
+  <!-- <ion-refresher (ionRefresh)="doRefresh($event)" >
+   <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing..."></ion-refresher-content>
+ </ion-refresher> -->
+ 
+  <ion-card>
+    <ion-item class="post">
+      <ion-thumbnail item-left  *ngIf="userData" (click)="changeProfile()">
+      </ion-thumbnail>
+      <p (click)="addPost()"> Proposez votre jeu de rôle </p> 
+      <p> et un lieu de rendez-vous </p>
+    </ion-item>
+    <ion-row >
+    
+      <ion-col>
+        <button ion-button icon-left clear small color="dark" (click)="addPost()">
+        
+          <ion-icon name="create" color="secondary"></ion-icon>
+          <div>Nouvelle partie</div>
+       
+        </button>
+      </ion-col>
+     
+    </ion-row>
+  </ion-card>
+
+  <ion-spinner name="ios" *ngIf="!recentPost.length"></ion-spinner>
+
+
+
+  <ion-card *ngFor="let p of recentPost">
+
+    <ion-item >
+    
+      <h2><span style="font-weight: 500;" (click)="userProfile(p.userKey)">{{p.userData.firstName}} {{p.userData.lastName}}</span> <span *ngIf="p.isType==1" class="upText">update his profile picture</span> <span *ngIf="p.isType==2" class="upText"> <ion-icon name="navigate" color="danger"></ion-icon> check in at {{p.mapData.address}}</span></h2>
+      <p>{{p.userData.Pseudo}}</p>
+            
+
+    </ion-item>
+
+    <ion-card-content *ngIf="p.postText && p.isType != 2">
+      <p>{{p.postText}}</p>
+    </ion-card-content>
+    <img *ngIf="p.isType==2"   src="{{p.mapUrl}}" style="200px" (click)="openMap(p.mapData.lat,p.mapData.long)">
+    <img src="{{p.postImage}}" style="height:200px" *ngIf="p.postImage" >
+    <!-- <sebm-google-map id="map" *ngIf="p.isType==2" [latitude]="p.mapData.lat" [longitude]="p.mapData.long" [zoom]="15" [disableDefaultUI]="true" [disableDoubleClickZoom]="true"  [zoomControl]="false" (click)="openMap(p.mapData.lat,p.mapData.long)">
+            <sebm-google-map-marker [latitude]="p.mapData.lat" [longitude]="p.mapData.long">
+                <sebm-google-map-info-window>
+                    <strong>{{p.mapData.address}}</strong>
+                </sebm-google-map-info-window>
+            </sebm-google-map-marker>
+        </sebm-google-map> -->
+    <ion-row>
+      <ion-col>
+        <button ion-button icon-left clear small color="dark" (click)="likePost(p)" *ngIf="!p.isLike">
+  <ion-icon ios="ios-people" md="md-people"></ion-icon>
+          <div>{{p.totalLikes}} Je veux jouer ! </div>
+        </button>
+        <button ion-button icon-left clear small color="custom" (click)="deslikePost(p)" *ngIf="p.isLike">
+  <ion-icon ios="ios-people" md="md-people"></ion-icon>
+          <div>{{p.totalLikes}} Vous participez !   </div>
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-left clear small color="dark" (click)="commentPost(p)" *ngIf="!p.isComment">
+          <ion-icon name="text"></ion-icon>
+          <div>{{p.totalComments}} commentaires </div>
+        </button>
+        <button ion-button icon-left clear small color="custom" (click)="commentPost(p)" *ngIf="p.isComment" >
+          <ion-icon name="text"></ion-icon>
+          <div>{{p.totalComments}} Commentaires </div>
+        </button>
+      </ion-col>
+
+    </ion-row>
+  </ion-card>
+</ion-content>

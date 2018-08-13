@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar color="custom">
+
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <ion-icon name="md-close"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>
+     Ajouter une partie
+    </ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+      <ion-item *ngIf="userData">
+       
+        <h2>{{userData.firstName}} {{userData.lastName}}</h2>
+      </ion-item>
+      <br>
+      <ion-item>
+        <ion-textarea rows="3" placeholder="Decrivez le jeu , le lieu de rendez-vous et l'heure " [(ngModel)]="postText"> </ion-textarea>
+      </ion-item>
+      <!-- <br> -->
+      <div class="shareImage" *ngIf="shareImage">
+        <div class="close-icon" (click)="removeImage()">
+          <ion-icon name="close"></ion-icon>
+        </div>
+        <img src="{{shareImage}}">
+      </div>
+  </ion-list>
+</ion-content>
+<ion-footer>
+  <ion-grid>
+    <ion-row>
+      <ion-col width-67>
+        <button ion-button icon-only outline color="custom" (click)="imageShare()" [disabled]="shareImage">
+          <ion-icon name='camera'></ion-icon>
+
+        </button>
+        <!-- <button ion-button icon-only outline color="custom" [disabled]="shareImage">
+          <ion-icon name='navigate'></ion-icon>
+
+        </button> -->
+      </ion-col>
+      <ion-col width-33>
+        <button ion-button icon-left outline color="custom" (click)="addPost()">
+          <ion-icon name='send'></ion-icon>
+       Envoyer
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-footer>

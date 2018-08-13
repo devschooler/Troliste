@@ -1,0 +1,8 @@
+{
+  "name": "FacebookClone",
+  "app_id": "fac1b66e",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}

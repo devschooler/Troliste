@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar color="custom">
+    <ion-title>
+      Notification
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-spinner name="ios" *ngIf="!recentNotification.length"></ion-spinner>
+
+    <ion-item [ngClass]="{'dark': p.isRead==0 }" *ngFor="let p of recentNotification" (click)="gotToPostDetail(p)">
+     
+      <h2 *ngIf="p.isType==0"><b>{{p.userData.firstName}} {{p.userData.lastName}}</b> Aime votre jeu "{{p.postText}}"</h2>
+      <h2 *ngIf="p.isType==1"><b>{{p.userData.firstName}} {{p.userData.lastName}}</b> a commenté votre jeu </h2>
+
+    
+      <p>{{p.notificationDateTime | amTimeAgo}}</p>
+    </ion-item>
+
+  </ion-list>
+</ion-content>
